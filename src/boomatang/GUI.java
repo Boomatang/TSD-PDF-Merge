@@ -90,6 +90,11 @@ public class GUI {
             events.popUpMassage(about1, "About Information");
         });
 
+        selectFolder.addActionListener(e -> {
+            display = events.promptForFolder(selectFolder);
+            subLabel.setText(display);
+        });
+
 
     }
 

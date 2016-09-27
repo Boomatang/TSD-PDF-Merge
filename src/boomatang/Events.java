@@ -1,6 +1,7 @@
 package boomatang;
 
 import javax.swing.*;
+import java.awt.*;
 
 /**
  * Created by boomatang on 27/09/16.
@@ -35,5 +36,27 @@ public class Events {
 
         JOptionPane.showMessageDialog(null, infoMessage, titleBar, JOptionPane.INFORMATION_MESSAGE);
     }
+
+
+    /**
+     * Code copied form stack over flow
+     *
+     * @param parent
+     * @return
+     */
+    public String promptForFolder(Component parent)
+    {
+        JFileChooser fc = new JFileChooser();
+        fc.setFileSelectionMode( JFileChooser.DIRECTORIES_ONLY );
+        fc.setCurrentDirectory(new java.io.File(System.getProperty("user.home")));
+
+        if( fc.showOpenDialog(parent) == JFileChooser.APPROVE_OPTION )
+        {
+            return fc.getSelectedFile().getAbsolutePath();
+        }
+
+        return null;
+    }
+
 
 }

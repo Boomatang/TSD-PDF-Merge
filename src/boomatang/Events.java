@@ -2,6 +2,11 @@ package boomatang;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.IOException;
+import java.nio.file.DirectoryIteratorException;
+import java.nio.file.DirectoryStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
 
 /**
  * Created by boomatang on 27/09/16.
@@ -58,5 +63,15 @@ public class Events {
         return null;
     }
 
+    public void testMethod(Path start) {
+        try (DirectoryStream<Path> stream = Files.newDirectoryStream(start)) {
+            for (Path file: stream) {
+                System.out.println(file.getFileName());
+            }
+
+        } catch (IOException | DirectoryIteratorException x) {
+            System.err.println(x);
+        }
+    }
 
 }

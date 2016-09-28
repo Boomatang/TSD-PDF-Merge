@@ -2,6 +2,10 @@ package boomatang;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 /**
  * Created by boomatang on 27/09/16.
@@ -10,7 +14,6 @@ import java.awt.*;
 public class GUI {
 
     private JFrame frame;
-    private Boolean alarmSet;
     private int[] frameSize;
 
 
@@ -47,7 +50,6 @@ public class GUI {
         frameSize[1] = 300;
         display = "Welcome";
         update = "Progress Report 0/0";
-        alarmSet = false;
         makeFrame();
         makeMenuBar();
         createPanels();
@@ -93,8 +95,20 @@ public class GUI {
         selectFolder.addActionListener(e -> {
             display = events.promptForFolder(selectFolder);
             subLabel.setText(display);
+
         });
 
+        startButton.addActionListener(e -> {
+            Path start = Paths.get(display);
+            CollectFiles cf = new CollectFiles();
+
+            try {
+                Files.walkFileTree(start, cf);
+            } catch (IOException e1) {
+                e1.printStackTrace();
+            }
+            cf.countList();
+        });
 
     }
 

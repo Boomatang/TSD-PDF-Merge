@@ -12,17 +12,17 @@ import static java.nio.file.FileVisitResult.*;
 
 /**
  * Created by boomatang on 28/09/16.
- *
+ * <p>
  * The information here has been taken from https://docs.oracle.com/javase/tutorial/essential/io/walk.html
- *
+ * <p>
  * I will be modifying this code to suit my use case
  */
 public class CollectFiles
-    extends SimpleFileVisitor<Path> {
+        extends SimpleFileVisitor<Path> {
 
     private ArrayList<PdfObj> fileList;
 
-    public CollectFiles(){
+    public CollectFiles() {
         fileList = new ArrayList<>();
     }
 
@@ -65,17 +65,17 @@ public class CollectFiles
 
     @Override
     public FileVisitResult preVisitDirectory(Path dir, BasicFileAttributes attr) {
-        if (dir.getFileName().toString().equalsIgnoreCase("COMBINED")){
+        if (dir.getFileName().toString().equalsIgnoreCase("COMBINED")) {
             return SKIP_SUBTREE;
         }
         return CONTINUE;
     }
 
-    public ArrayList getFileList(){
+    public ArrayList getFileList() {
         return fileList;
     }
 
-    public void countList(){
+    public void countList() {
         System.out.println(fileList.size());
     }
 

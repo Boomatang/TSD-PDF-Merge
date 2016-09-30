@@ -2,8 +2,6 @@ package boomatang;
 
 import javax.swing.*;
 import java.awt.*;
-import java.io.IOException;
-import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
@@ -100,10 +98,7 @@ public class GUI {
 
         startButton.addActionListener(e -> {
             Path start = Paths.get(display);
-            SortFiles sf = new SortFiles(start);
-
-
-            sf.countList();
+            ProcessFiles pf = new ProcessFiles(start);
         });
 
     }
@@ -198,7 +193,6 @@ public class GUI {
         midPanel = new JPanel(new GridLayout(3, 0));
         bottomPanel = new JPanel(new FlowLayout());
         bottomPanel.setOpaque(false);
-
 
 
         // add the JPanels to the contentPane specifying the position of each

@@ -49,14 +49,12 @@ public class Events {
      * @param parent
      * @return
      */
-    public String promptForFolder(Component parent)
-    {
+    public String promptForFolder(Component parent) {
         JFileChooser fc = new JFileChooser();
-        fc.setFileSelectionMode( JFileChooser.DIRECTORIES_ONLY );
+        fc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
         fc.setCurrentDirectory(new java.io.File(System.getProperty("user.home")));
 
-        if( fc.showOpenDialog(parent) == JFileChooser.APPROVE_OPTION )
-        {
+        if (fc.showOpenDialog(parent) == JFileChooser.APPROVE_OPTION) {
             return fc.getSelectedFile().getAbsolutePath();
         }
 
@@ -65,7 +63,7 @@ public class Events {
 
     public void testMethod(Path start) {
         try (DirectoryStream<Path> stream = Files.newDirectoryStream(start)) {
-            for (Path file: stream) {
+            for (Path file : stream) {
                 System.out.println(file.getFileName());
             }
 

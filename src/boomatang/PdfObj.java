@@ -31,7 +31,6 @@ public class PdfObj {
         setCreatedDate();
         setDiscipline();
         setWbs();
-        System.out.println(getHashValue() + " : " + getRevision());
 
     }
 

@@ -15,12 +15,23 @@ public class PdfObj {
     private String revision;
     private String name;
     private Path filePath;
+    private String wbs;
+    private String discipline;
+
+    public PdfObj(){
+        revision = "0";
+        createdDate = 0;
+
+    }
 
     public PdfObj(Path input){
         filePath = input;
         setName();
         setRevision();
         setCreatedDate();
+        setDiscipline();
+        setWbs();
+        System.out.println(getHashValue() + " : " + getRevision());
 
     }
 
@@ -38,6 +49,14 @@ public class PdfObj {
 
     public String getName(){
         return name;
+    }
+
+    public String getWbs(){
+        return wbs;
+    }
+
+    public String getDiscipline(){
+        return discipline;
     }
 
     private void setName(){
@@ -58,12 +77,62 @@ public class PdfObj {
         }
     }
 
+
     private void setCreatedDate(){
         try {
             BasicFileAttributes attr = Files.readAttributes(filePath, BasicFileAttributes.class);
             createdDate = attr.creationTime().toMillis();
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+
+    private void setDiscipline(){
+        try {
+            String[] temp = name.split("-", 2);
+
+            if (temp[1].toLowerCase().startsWith("vn")) {
+                discipline = "VENDOR";
+            } else if (temp[1].toLowerCase().startsWith("pl")) {
+                discipline = "PLATE";
+            } else if (temp[1].toLowerCase().startsWith("se")) {
+                discipline = "SECTION";
+            } else {
+                discipline = temp[1].substring(2, 4).toUpperCase();
+            }
+        }
+        catch (ArrayIndexOutOfBoundsException exc) {
+            discipline = "UNKNOWN";
+        }
+    }
+
+    private void setWbs(){
+        try {
+            String[] temp = name.split("-", 2);
+
+            if (temp[1].toLowerCase().startsWith("vn")) {
+                wbs = "Global";
+            } else if (temp[1].toLowerCase().startsWith("pl")) {
+                wbs = "Global";
+            } else if (temp[1].toLowerCase().startsWith("se")) {
+                wbs = "Global";
+            } else {
+                wbs = temp[1].substring(0, 2).toUpperCase();
+            }
+        }
+        catch (ArrayIndexOutOfBoundsException exc) {
+            wbs = "UNKNOWN";
+        }
+    }
+
+    public int getHashValue(){
+
+        if (revision != null){
+            return revision.hashCode();
+        }
+        else {
+            return 0;
         }
     }
 }

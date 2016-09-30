@@ -30,7 +30,7 @@ public class CollectFiles
     @Override
     public FileVisitResult visitFile(Path file, BasicFileAttributes attr) {
         if (attr.isSymbolicLink()) {
-            System.out.format("Symbolic link: %s ", file);
+//            System.out.format("Symbolic link: %s ", file);
         } else if (attr.isRegularFile()) {
             //System.out.format("Regular file: %s ", file);
 
@@ -38,20 +38,20 @@ public class CollectFiles
             String[] temp2 = temp.split(Pattern.quote("."));
 
             if (temp2[1].equalsIgnoreCase("pdf")) {
-                System.out.format("Regular file: %s ", temp);
+//                System.out.format("Regular file: %s ", temp);
                 fileList.add(new PdfObj(file));
             }
         } else {
-            System.out.format("Other: %s ", file);
+//            System.out.format("Other: %s ", file);
         }
-        System.out.println("(" + attr.size() + "bytes)");
+//        System.out.println("(" + attr.size() + "bytes)");
         return CONTINUE;
     }
 
     // Print each directory visited.
     @Override
     public FileVisitResult postVisitDirectory(Path dir, IOException exc) {
-        System.out.format("Directory: %s%n", dir);
+//        System.out.format("Directory: %s%n", dir);
         return CONTINUE;
     }
 
@@ -61,6 +61,18 @@ public class CollectFiles
     public FileVisitResult visitFileFailed(Path file, IOException exc) {
         System.err.println(exc);
         return CONTINUE;
+    }
+
+    @Override
+    public FileVisitResult preVisitDirectory(Path dir, BasicFileAttributes attr) {
+        if (dir.getFileName().toString().equalsIgnoreCase("COMBINED")){
+            return SKIP_SUBTREE;
+        }
+        return CONTINUE;
+    }
+
+    public ArrayList getFileList(){
+        return fileList;
     }
 
     public void countList(){

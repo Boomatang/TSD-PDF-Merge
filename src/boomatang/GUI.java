@@ -100,14 +100,10 @@ public class GUI {
 
         startButton.addActionListener(e -> {
             Path start = Paths.get(display);
-            CollectFiles cf = new CollectFiles();
+            SortFiles sf = new SortFiles(start);
 
-            try {
-                Files.walkFileTree(start, cf);
-            } catch (IOException e1) {
-                e1.printStackTrace();
-            }
-            cf.countList();
+
+            sf.countList();
         });
 
     }

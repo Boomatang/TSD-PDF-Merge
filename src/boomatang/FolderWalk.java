@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.nio.file.FileVisitResult;
 import java.nio.file.Path;
 import java.nio.file.SimpleFileVisitor;
-import java.util.ArrayList;
+
 
 import static java.nio.file.FileVisitResult.CONTINUE;
 import static java.nio.file.FileVisitResult.TERMINATE;
@@ -14,6 +14,7 @@ import static java.nio.file.FileVisitResult.TERMINATE;
  */
 public class FolderWalk extends SimpleFileVisitor<Path> {
     private Path folder;
+
 
     public FolderWalk() {
 

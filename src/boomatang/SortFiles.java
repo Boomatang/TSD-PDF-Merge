@@ -27,7 +27,7 @@ public class SortFiles {
         System.out.println("Select the most up-to-date files...");
         newestRevision();
         System.out.println("Sorting files into disciplines...");
-        setDisciplineFilterd();
+        setDisciplineFilter();
         System.out.println("Getting WBS areas..");
         setWbs();
     }
@@ -68,16 +68,16 @@ public class SortFiles {
         }
     }
 
-    private void setDisciplineFilterd() {
+    private void setDisciplineFilter() {
         for (PdfObj PDF : nameShortList) {
-            if (disciplineFiltered.containsKey(PDF.getName())) {
-                List<Object> temp = (ArrayList<Object>) disciplineFiltered.get(PDF.getName());
+            if (disciplineFiltered.containsKey(PDF.getDiscipline())) {
+                ArrayList temp = (ArrayList) disciplineFiltered.get(PDF.getDiscipline());
                 temp.add(PDF);
-                disciplineFiltered.put(PDF.getName(), temp);
+                disciplineFiltered.put(PDF.getDiscipline(), temp);
             } else {
                 List<Object> temp = new ArrayList<Object>();
                 temp.add(PDF);
-                disciplineFiltered.put(PDF.getName(), temp);
+                disciplineFiltered.put(PDF.getDiscipline(), temp);
             }
         }
     }

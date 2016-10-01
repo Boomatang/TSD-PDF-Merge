@@ -1,10 +1,20 @@
 package boomatang;
 
+import org.apache.pdfbox.io.MemoryUsageSetting;
+import org.apache.pdfbox.multipdf.PDFMergerUtility;
+
 import java.awt.*;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * Created by boomatang on 30/09/16.
@@ -48,6 +58,12 @@ public class ProcessFiles {
         System.out.println("Creating date folder...");
         createFolder.createDateFolder();
         makeWbsFolders();
+        System.out.println();
+        System.out.println("------------------------  Working below this  ------------------------------");
+        System.out.println();
+        sortPDFS();
+
+        System.out.println("All Files have been created!");
 
         // Merge the pdfs
         // End
@@ -70,4 +86,64 @@ public class ProcessFiles {
         }
     }
 
+
+    public void sortPDFS(){
+        Map workingMap = sf.getDisciplineFiltered();
+        ArrayList<String> tempKeys = new ArrayList<String>();
+        ArrayList PDFnames = new ArrayList();
+        ArrayList<PdfObj> PDFlist = new ArrayList<PdfObj>();
+
+        for (Object key : workingMap.keySet()){
+            tempKeys.add(key.toString());
+
+        }
+
+        for (String keys : tempKeys){
+            System.out.println(keys);
+            ArrayList<String> namesSorted = new ArrayList<>();
+            PDFlist = (ArrayList<PdfObj>) workingMap.get(keys);
+            for (PdfObj PDF : PDFlist) {
+//                System.out.println(PDF.getName());
+                namesSorted.add(PDF.getName());
+                Collections.sort(namesSorted);
+            }
+
+            Path createPDFname = null;
+            PDFMergerUtility ut = new PDFMergerUtility();
+
+            for (String nameText : namesSorted) {
+
+                for (PdfObj PDF : PDFlist) {
+                    if (createPDFname == null) {
+                        createPDFname = Paths.get(createFolder.getDateFolder().toString(), PDF.getWbs(),
+                                PDF.getDiscipline() + " (" + LocalDate.now() + ").pdf");
+                    }
+
+                    if (PDF.getName().equalsIgnoreCase(nameText)) {
+                        System.out.println(PDF.getFilePath());
+                        try {
+                            ut.addSource(new File(PDF.getFilePath().toString()));
+                        } catch (FileNotFoundException e) {
+                            e.printStackTrace();
+                        }
+                        //createFolder.createSubFolder(PDF.getWbs(), PDF.getDiscipline());
+                    }
+                }
+            }
+                try {
+                    ut.setDestinationFileName(createPDFname.toString());
+                    ut.mergeDocuments(MemoryUsageSetting.setupMainMemoryOnly());
+                } catch (IOException e) {
+                    e.printStackTrace();
+
+                createPDFname = null;
+            }
+
+            System.out.println();
+            System.out.println("------------------------------------------------------");
+            System.out.println();
+
+        }
+
+    }
 }

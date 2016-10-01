@@ -76,4 +76,20 @@ public class CreateFolder {
             }
         }
     }
+
+    public void createSubFolder(String wbs, String folderName){
+        Path create = Paths.get(dateFolder.toString(), wbs, folderName);
+        if (!Files.exists(create)) {
+            try {
+                Files.createDirectory(create);
+            } catch (IOException e) {
+                e.printStackTrace();
+
+            }
+        }
+    }
+
+    public Path getDateFolder(){
+        return dateFolder;
+    }
 }

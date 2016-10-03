@@ -98,7 +98,9 @@ public class GUI {
 
         startButton.addActionListener(e -> {
             Path start = Paths.get(display);
+            mainLabel.setText("Merging Files");
             ProcessFiles pf = new ProcessFiles(start);
+            mainLabel.setText("Finished");
         });
 
     }
@@ -166,7 +168,7 @@ public class GUI {
 
         // int[] xy = events.selectScreenPosition(screen, frameSize);
         int[] xy = {200, 200};
-        frame = new JFrame("Alarm Control Unit");
+        frame = new JFrame("TSD PDF Merge");
         // TODO set the size of the screen to centre values
         frame.setLocation(xy[0], xy[1]);
         contentPane = frame.getContentPane();

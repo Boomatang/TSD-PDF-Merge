@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_tsd-pdf-merge" default="compile.module.tsd-pdf-merge">
+  <dirname property="module.tsd-pdf-merge.basedir" file="${ant.file.module_tsd-pdf-merge}"/>
+  
+  <property name="module.jdk.home.tsd-pdf-merge" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.tsd-pdf-merge" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.tsd-pdf-merge" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.tsd-pdf-merge" value="-encoding UTF-8 -source 8 -target 8 ${compiler.args}"/>
+  
+  <property name="tsd-pdf-merge.output.dir" value="${module.tsd-pdf-merge.basedir}/out/production/TSD-PDF-Merge"/>
+  <property name="tsd-pdf-merge.testoutput.dir" value="${module.tsd-pdf-merge.basedir}/out/test/TSD-PDF-Merge"/>
+  
+  <path id="tsd-pdf-merge.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="tsd-pdf-merge.module.production.classpath">
+    <path refid="${module.jdk.classpath.tsd-pdf-merge}"/>
+    <pathelement location="${idea.home}/redist/annotations-java8.jar"/>
+    <path refid="library.org.apache.pdfbox:pdfbox:2.0.3.classpath"/>
+  </path>
+  
+  <path id="tsd-pdf-merge.runtime.production.module.classpath">
+    <pathelement location="${tsd-pdf-merge.output.dir}"/>
+    <pathelement location="${idea.home}/redist/annotations-java8.jar"/>
+    <path refid="library.org.apache.pdfbox:pdfbox:2.0.3.classpath"/>
+  </path>
+  
+  <path id="tsd-pdf-merge.module.classpath">
+    <path refid="${module.jdk.classpath.tsd-pdf-merge}"/>
+    <pathelement location="${tsd-pdf-merge.output.dir}"/>
+    <pathelement location="${idea.home}/redist/annotations-java8.jar"/>
+    <path refid="library.org.apache.pdfbox:pdfbox:2.0.3.classpath"/>
+  </path>
+  
+  <path id="tsd-pdf-merge.runtime.module.classpath">
+    <pathelement location="${tsd-pdf-merge.testoutput.dir}"/>
+    <pathelement location="${tsd-pdf-merge.output.dir}"/>
+    <pathelement location="${idea.home}/redist/annotations-java8.jar"/>
+    <path refid="library.org.apache.pdfbox:pdfbox:2.0.3.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.tsd-pdf-merge">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.tsd-pdf-merge">
+    <patternset refid="excluded.from.module.tsd-pdf-merge"/>
+  </patternset>
+  
+  <path id="tsd-pdf-merge.module.sourcepath">
+    <dirset dir="${module.tsd-pdf-merge.basedir}">
+      <include name="src"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.tsd-pdf-merge" depends="compile.module.tsd-pdf-merge.production,compile.module.tsd-pdf-merge.tests" description="Compile module TSD-PDF-Merge"/>
+  
+  <target name="compile.module.tsd-pdf-merge.production" depends="register.custom.compilers" description="Compile module TSD-PDF-Merge; production classes">
+    <mkdir dir="${tsd-pdf-merge.output.dir}"/>
+    <javac2 destdir="${tsd-pdf-merge.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.tsd-pdf-merge}/javac">
+      <compilerarg line="${compiler.args.tsd-pdf-merge}"/>
+      <bootclasspath refid="tsd-pdf-merge.module.bootclasspath"/>
+      <classpath refid="tsd-pdf-merge.module.production.classpath"/>
+      <src refid="tsd-pdf-merge.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.tsd-pdf-merge"/>
+    </javac2>
+    
+    <copy todir="${tsd-pdf-merge.output.dir}">
+      <fileset dir="${module.tsd-pdf-merge.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.tsd-pdf-merge.tests" depends="register.custom.compilers,compile.module.tsd-pdf-merge.production" description="compile module TSD-PDF-Merge; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.tsd-pdf-merge" description="cleanup module">
+    <delete dir="${tsd-pdf-merge.output.dir}"/>
+    <delete dir="${tsd-pdf-merge.testoutput.dir}"/>
+  </target>
+</project>

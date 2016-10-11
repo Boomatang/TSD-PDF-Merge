@@ -1,16 +1,11 @@
 package boomatang;
 
-<<<<<<< HEAD
+
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.FileVisitResult;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-=======
-import java.io.IOException;
-import java.nio.file.FileVisitResult;
-import java.nio.file.Path;
->>>>>>> master
 import java.nio.file.SimpleFileVisitor;
 
 
@@ -33,7 +28,7 @@ public class FolderWalk extends SimpleFileVisitor<Path> {
     // Print each directory visited.
     @Override
     public FileVisitResult postVisitDirectory(Path dir, IOException exc) {
-<<<<<<< HEAD
+
         StringBuilder sb = new StringBuilder();
         int x = dir.getNameCount();
         for (int i = 0; i < x; i ++){
@@ -56,17 +51,6 @@ public class FolderWalk extends SimpleFileVisitor<Path> {
 
 
             }
-
-
-
-=======
-
-
-        if (dir.getFileName().toString().equals("Pdf's")){
-            folder = dir;
-            return TERMINATE;
-        }
->>>>>>> master
 
 
         return CONTINUE;

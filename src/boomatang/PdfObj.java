@@ -69,7 +69,7 @@ public class PdfObj {
         try {
             String temp = filePath.getFileName().toString();
             String[] temp2 = temp.split("_");
-            temp2 = temp2[1].split(Pattern.quote("."));
+            temp2 = temp2[-1].split(Pattern.quote("."));
             revision = temp2[0];
         }
         catch (ArrayIndexOutOfBoundsException exc){

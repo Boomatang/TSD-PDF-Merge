@@ -25,13 +25,19 @@ public class ProcessFiles {
     private SortFiles sf;
     private CreateFolder createFolder;
     private ArrayList<String> wbsGroup;
+    private Path start;
 
     public ProcessFiles(Path start){
+        this.start = start;
+        cf = new CollectFiles();
+    }
+
+    public boolean process(){
 
         // collect the files
 
         System.out.println("Collecting files...");
-        cf = new CollectFiles();
+
         try {
             Files.walkFileTree(start, cf);
         } catch (IOException e1) {
@@ -67,9 +73,8 @@ public class ProcessFiles {
 
         // Merge the pdfs
         // End
-
+        return false;
     }
-
 
     private void makeWbsFolders(){
         int counter = 1;

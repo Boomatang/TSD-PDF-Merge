@@ -36,6 +36,7 @@ public class GUI {
     private JLabel subLabel, mainLabel;
     private Events events;
 
+    private MyThread counter;
     /**
      * Here is the main constructor
      */
@@ -70,6 +71,7 @@ public class GUI {
      */
     private void addEventHandlers() {
         // Here the quit button is handled
+        counter = new MyThread(mainLabel);
         quit.addActionListener(e -> {
             //runs the quit method from the MyEvent class
             events.quit(true);
@@ -99,9 +101,12 @@ public class GUI {
         startButton.addActionListener(e -> {
             Path start = Paths.get(display);
             mainLabel.setText("Merging Files");
-            ProcessFiles pf = new ProcessFiles(start);
+            counter.begin(start);
             mainLabel.setText("Finished");
+
         });
+
+        cancelButton.addActionListener(e -> counter.finish());
 
     }
 

@@ -11,11 +11,9 @@ import java.time.LocalDate;
 public class CreateFolder {
 
     private Path rootFolder;
-<<<<<<< HEAD
+
     private Path combined;
-=======
-    private Path combine;
->>>>>>> master
+
     private Path dateFolder;
 
 
@@ -23,12 +21,9 @@ public class CreateFolder {
 
         System.out.println("Setting root folder...");
         setRootFolder(start);
-<<<<<<< HEAD
-        combined = Paths.get(rootFolder.toString(), "COMBINED");
-=======
-        combine = Paths.get(rootFolder.toString(), "COMBINE");
->>>>>>> master
-    }
+        combined = Paths.get(rootFolder.toString(), "COMBINED");}
+
+
 
     private void setRootFolder(Path somePoint){
         Path possibleFolder;
@@ -37,10 +32,9 @@ public class CreateFolder {
         try {
             Files.walkFileTree(somePoint, fw);
         } catch (IOException e) {
-<<<<<<< HEAD
+
             System.out.print("Error in setRootFolder");
-=======
->>>>>>> master
+
             e.printStackTrace();
         }
         possibleFolder = fw.getFolder();
@@ -52,21 +46,17 @@ public class CreateFolder {
 
     public boolean combineExist() {
 
-<<<<<<< HEAD
+
         return Files.exists(combined);
-=======
-        return Files.exists(combine);
->>>>>>> master
+
 
     }
 
     public void createCombine() {
         try {
-<<<<<<< HEAD
+
             Files.createDirectory(combined);
-=======
-            Files.createDirectory(combine);
->>>>>>> master
+
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -74,11 +64,9 @@ public class CreateFolder {
 
     public void createDateFolder(){
         String date = LocalDate.now().toString();
-<<<<<<< HEAD
+
         dateFolder = Paths.get(combined.toString(), date);
-=======
-        dateFolder = Paths.get(combine.toString(), date);
->>>>>>> master
+
         if (!Files.exists(dateFolder)) {
             try {
                 Files.createDirectory(dateFolder);

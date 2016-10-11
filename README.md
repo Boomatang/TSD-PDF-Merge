@@ -17,12 +17,15 @@ areas get broken down in to their discipline. so all the BR's will be together a
 It is not know how this will handle custom naming, its still in a very earlier stage of life.
 
 ## Version History
+<<<<<<< HEAD
 ### 0.1.1
 - Fix to Combined folder been used.
 - Fix to revison number fault added.
 - Fix starting below Pdf's folder bug.
 
 
+=======
+>>>>>>> master
 ### 0.1-Bata
 - Basic  function added.
 

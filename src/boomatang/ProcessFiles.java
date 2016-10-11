@@ -25,7 +25,7 @@ public class ProcessFiles {
     private SortFiles sf;
     private CreateFolder createFolder;
     private ArrayList<String> wbsGroup;
-<<<<<<< HEAD
+
     private Path start;
 
     public ProcessFiles(Path start){
@@ -34,19 +34,12 @@ public class ProcessFiles {
     }
 
     public boolean process(){
-=======
 
-    public ProcessFiles(Path start){
->>>>>>> master
 
         // collect the files
 
         System.out.println("Collecting files...");
-<<<<<<< HEAD
 
-=======
-        cf = new CollectFiles();
->>>>>>> master
         try {
             Files.walkFileTree(start, cf);
         } catch (IOException e1) {
@@ -82,16 +75,16 @@ public class ProcessFiles {
 
         // Merge the pdfs
         // End
-<<<<<<< HEAD
+
         return false;
     }
 
-=======
-
-    }
 
 
->>>>>>> master
+
+
+
+
     private void makeWbsFolders(){
         int counter = 1;
         int total = wbsGroup.size();

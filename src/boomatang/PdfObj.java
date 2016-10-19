@@ -100,7 +100,11 @@ public class PdfObj {
                 discipline = "PLATE";
             } else if (temp[1].toLowerCase().startsWith("se")) {
                 discipline = "SECTION";
-            } else {
+            } else if (temp[1].substring(3, 5).toLowerCase().startsWith("ga")) {
+                temp = name.split("-");
+                discipline = temp[3];
+            }
+            else {
                 discipline = temp[1].substring(2, 4).toUpperCase();
             }
         }

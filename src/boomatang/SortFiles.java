@@ -7,7 +7,6 @@ import java.util.*;
  */
 public class SortFiles {
 
-    private CollectFiles cf;
     private ArrayList<PdfObj> fileList;
     private Map nameFilteredPDF;
     private ArrayList<PdfObj> nameShortList;

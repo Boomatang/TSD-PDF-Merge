@@ -2,6 +2,7 @@ package boomatang;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
@@ -107,6 +108,14 @@ public class GUI {
         });
 
         cancelButton.addActionListener(e -> counter.finish());
+
+        showFiles.addActionListener(e -> {
+            try {
+                EndUser.openFolder(display);
+            } catch (IOException e1) {
+                e1.printStackTrace();
+            }
+        });
 
     }
 

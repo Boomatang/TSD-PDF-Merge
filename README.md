@@ -13,7 +13,7 @@ After the program is after running there is a folder called COMBINE created in t
 It is not know how this will handle custom naming, its still in a very earlier stage of life.
 
 ## Version History
-### 0.2 next release
+### 0.2
 - Function added, Open merged folder that had just been merged. 
 - Feature added, GA drawings are spilt into sub files.
 - About details added

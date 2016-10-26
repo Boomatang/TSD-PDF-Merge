@@ -1,4 +1,4 @@
-package boomatang;
+package PDFMerge;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -8,7 +8,7 @@ import java.util.regex.Pattern;
 
 
 /**
- * Created by boomatang on 28/09/16.
+ * Created by Boomatang on 28/09/16.
  */
 public class PdfObj {
     private long createdDate;
@@ -100,7 +100,11 @@ public class PdfObj {
                 discipline = "PLATE";
             } else if (temp[1].toLowerCase().startsWith("se")) {
                 discipline = "SECTION";
-            } else {
+            } else if (temp[1].substring(3, 5).toLowerCase().startsWith("ga")) {
+                temp = name.split("-");
+                discipline = temp[3];
+            }
+            else {
                 discipline = temp[1].substring(2, 4).toUpperCase();
             }
         }

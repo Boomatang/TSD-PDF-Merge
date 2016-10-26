@@ -1,4 +1,4 @@
-package boomatang;
+package PDFMerge;
 
 
 import java.io.File;
@@ -13,7 +13,7 @@ import static java.nio.file.FileVisitResult.CONTINUE;
 import static java.nio.file.FileVisitResult.TERMINATE;
 
 /**
- * Created by boomatang on 30/09/16.
+ * Created by Boomatang on 30/09/16.
  */
 public class FolderWalk extends SimpleFileVisitor<Path> {
     private Path folder;

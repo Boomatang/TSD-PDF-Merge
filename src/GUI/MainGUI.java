@@ -1,15 +1,20 @@
-package boomatang;
+package GUI;
+
+import Other.EndUser;
+import Other.Events;
+import PDFMerge.MyThread;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
 /**
- * Created by boomatang on 27/09/16.
+ * Created by Boomatang on 27/09/16.
  */
 
-public class GUI {
+public class MainGUI {
 
     private JFrame frame;
     private int[] frameSize;
@@ -36,13 +41,11 @@ public class GUI {
     private JLabel subLabel, mainLabel;
     private Events events;
 
-
     private MyThread counter;
-
     /**
      * Here is the main constructor
      */
-    public GUI() {
+    public MainGUI() {
 
         events = new Events();
 
@@ -73,9 +76,7 @@ public class GUI {
      */
     private void addEventHandlers() {
         // Here the quit button is handled
-
         counter = new MyThread(mainLabel);
-
         quit.addActionListener(e -> {
             //runs the quit method from the MyEvent class
             events.quit(true);
@@ -89,12 +90,7 @@ public class GUI {
             events.popUpMassage(helpText, "Help Information");
         });
 
-        // handles the pressing of the about button
-        about.addActionListener(actionEvent -> {
-            String about1 = "This needs to be filled in";
 
-            events.popUpMassage(about1, "About Information");
-        });
 
         selectFolder.addActionListener(e -> {
             display = events.promptForFolder(selectFolder);
@@ -105,7 +101,6 @@ public class GUI {
         startButton.addActionListener(e -> {
             Path start = Paths.get(display);
             mainLabel.setText("Merging Files");
-
             counter.begin(start);
             mainLabel.setText("Finished");
 
@@ -113,6 +108,15 @@ public class GUI {
 
         cancelButton.addActionListener(e -> counter.finish());
 
+        showFiles.addActionListener(e -> {
+            try {
+                EndUser.openFolder(display);
+            } catch (IOException e1) {
+                e1.printStackTrace();
+            }
+        });
+
+        about.addActionListener(e -> new About());
 
     }
 
@@ -190,7 +194,7 @@ public class GUI {
 
     /**
      * Create instances of all the panels and set their layouts
-     * Copied from GUI.java
+     * Copied from MainGUI.java
      */
 
     public void createPanels() {

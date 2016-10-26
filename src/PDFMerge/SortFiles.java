@@ -1,13 +1,12 @@
-package boomatang;
+package PDFMerge;
 
 import java.util.*;
 
 /**
- * Created by boomatang on 30/09/16.
+ * Created by Boomatang on 30/09/16.
  */
 public class SortFiles {
 
-    private CollectFiles cf;
     private ArrayList<PdfObj> fileList;
     private Map nameFilteredPDF;
     private ArrayList<PdfObj> nameShortList;

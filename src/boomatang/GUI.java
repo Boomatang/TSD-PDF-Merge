@@ -86,12 +86,7 @@ public class GUI {
             events.popUpMassage(helpText, "Help Information");
         });
 
-        // handles the pressing of the about button
-        about.addActionListener(actionEvent -> {
-            String about1 = "This needs to be filled in";
 
-            events.popUpMassage(about1, "About Information");
-        });
 
         selectFolder.addActionListener(e -> {
             display = events.promptForFolder(selectFolder);
@@ -116,6 +111,8 @@ public class GUI {
                 e1.printStackTrace();
             }
         });
+
+        about.addActionListener(e -> new About());
 
     }
 

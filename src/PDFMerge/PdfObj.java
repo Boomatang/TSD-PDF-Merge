@@ -1,4 +1,4 @@
-package boomatang;
+package PDFMerge;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -8,7 +8,7 @@ import java.util.regex.Pattern;
 
 
 /**
- * Created by boomatang on 28/09/16.
+ * Created by Boomatang on 28/09/16.
  */
 public class PdfObj {
     private long createdDate;

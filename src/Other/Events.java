@@ -1,4 +1,4 @@
-package boomatang;
+package Other;
 
 import javax.swing.*;
 import java.awt.*;
@@ -9,7 +9,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 
 /**
- * Created by boomatang on 27/09/16.
+ * Created by Boomatang on 27/09/16.
  */
 public class Events {
 

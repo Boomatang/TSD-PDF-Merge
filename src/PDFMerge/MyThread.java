@@ -1,10 +1,10 @@
-package boomatang;
+package PDFMerge;
 
 import javax.swing.*;
 import java.nio.file.Path;
 
 /**
- * Created by boomatang on 08/10/16.
+ * Created by Boomatang on 08/10/16.
  */
 public class MyThread implements Runnable{
     private Thread cThread = new Thread(this);

@@ -1,9 +1,11 @@
-package boomatang;
+package GUI;
+
+import Information.IAbout;
 
 import javax.swing.*;
 
 /**
- * Created by Desktop on 26/10/2016.
+ * Created by Boomatang on 26/10/2016.
  */
 public class About implements IAbout {
 

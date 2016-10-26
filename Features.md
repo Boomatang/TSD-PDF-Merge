@@ -21,3 +21,17 @@ This feature needs some thinking about to even explain what is been tried.
 This in time will become a cover sheet for the drawings that will use the same style template as the drawing sheets. When it gets to that stage there will need to be the option to add the cover sheet to the fully merged files or use in as a standalone file.
  
 For now this will just be a formatted text file that can be used to check of that all the required files have been merged. This more than likely will not be sent to the customer but used in house for checking only.
+
+There is a number of points that need to be looked at before any work can be start on this feature. Below we will decide on the function that this feature should provide. I will be talking about this as if it is the full function that is creating a pdf file as the output.
+
+- What information will be displayed?
+- Will each merged file have its own content file or will there just be one content file for that day?
+- What other information should be used in this, such as the client contact details?
+- If the client details need to go into the file how would this be gone about?
+
+**What information will be displayed?**
+Given that the file name is the only information that is given about the contains this limits what information can be displayed. We know that the file is the drawing number with information appended to it. Some of this is information is the revision number this can be found on all drawings and should be included. On the GA drawings the drawing title do be added to the file name. For the file we could get the date on which the pdf was created, this would not be the same as the date of the revision. 
+
+If we just use the drawing number for the document names and the revision that is included in the merged document, this will let the user know see what they have. Include the date that the file was export to pdf could be help if there is a file that was last exported to pdf weeks before, or if there seems to be a difference in two files of the version. This information should be displayed in columns with a header on each page if more than one page was required.
+ 
+Other information that could be included is the number of drawings that was merged to start with, This would not allow for multi page pdfs  but would give a good overview to the contains of the merged file.

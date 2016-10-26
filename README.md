@@ -16,6 +16,7 @@ It is not know how this will handle custom naming, its still in a very earlier s
 ### 0.2 next release
 - Function added, Open merged folder that had just been merged. 
 - Feature added, GA drawings are spilt into sub files.
+- About details added
 
 ### 0.1.1
 - Fix to Combined folder been used.

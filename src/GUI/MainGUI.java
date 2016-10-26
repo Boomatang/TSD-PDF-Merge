@@ -1,4 +1,8 @@
-package boomatang;
+package GUI;
+
+import Other.EndUser;
+import Other.Events;
+import PDFMerge.MyThread;
 
 import javax.swing.*;
 import java.awt.*;
@@ -7,10 +11,10 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 /**
- * Created by boomatang on 27/09/16.
+ * Created by Boomatang on 27/09/16.
  */
 
-public class GUI {
+public class MainGUI {
 
     private JFrame frame;
     private int[] frameSize;
@@ -41,7 +45,7 @@ public class GUI {
     /**
      * Here is the main constructor
      */
-    public GUI() {
+    public MainGUI() {
 
         events = new Events();
 
@@ -190,7 +194,7 @@ public class GUI {
 
     /**
      * Create instances of all the panels and set their layouts
-     * Copied from GUI.java
+     * Copied from MainGUI.java
      */
 
     public void createPanels() {

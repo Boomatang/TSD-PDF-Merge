@@ -1,4 +1,4 @@
-package boomatang;
+package PDFMerge;
 
 import java.io.IOException;
 import java.nio.file.FileVisitResult;
@@ -11,7 +11,7 @@ import java.util.regex.Pattern;
 import static java.nio.file.FileVisitResult.*;
 
 /**
- * Created by boomatang on 28/09/16.
+ * Created by Boomatang on 28/09/16.
  * <p>
  * The information here has been taken from https://docs.oracle.com/javase/tutorial/essential/io/walk.html
  * <p>

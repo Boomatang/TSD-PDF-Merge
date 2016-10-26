@@ -1,7 +1,7 @@
-package boomatang;
+package Information;
 
 /**
- * Created by Desktop on 26/10/2016.
+ * Created by Boomatang on 26/10/2016.
  */
 public interface IAbout {
     String VERSION = "0.2";

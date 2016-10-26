@@ -1,4 +1,6 @@
-package boomatang;
+package Other;
+
+import PDFMerge.FolderWalk;
 
 import java.io.File;
 import java.io.IOException;
@@ -8,7 +10,7 @@ import java.nio.file.Paths;
 import java.time.LocalDate;
 
 /**
- * Created by Desktop on 19/10/2016.
+ * Created by Boomatang on 19/10/2016.
  */
 public class EndUser {
     public static void openFolder(String path) throws IOException {

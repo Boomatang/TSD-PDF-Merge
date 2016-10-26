@@ -1,4 +1,4 @@
-package boomatang;
+package PDFMerge;
 
 import org.apache.pdfbox.io.MemoryUsageSetting;
 import org.apache.pdfbox.multipdf.PDFMergerUtility;
@@ -15,7 +15,7 @@ import java.util.Collections;
 import java.util.Map;
 
 /**
- * Created by boomatang on 30/09/16.
+ * Created by Boomatang on 30/09/16.
  */
 public class ProcessFiles {
 

@@ -1,5 +1,7 @@
 package GUI;
 
+import DXFMerge.DXFThread;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -10,15 +12,20 @@ public class DxfGUI extends PanelDefaults {
     private JButton run, cancel;
     private JCheckBox allFiles;
     private JPanel content;
+    private DXFThread dxfThread;
+    private JLabel display;
 
-
-    public DxfGUI(){
+    public DxfGUI(JLabel display){
+        this.display = display;
         createPanels();
         makeButtons();
     }
 
     @Override
     void addEventHandlers() {
+        dxfThread = new DXFThread(display);
+
+        run.addActionListener(e -> dxfThread.begin());
 
     }
 

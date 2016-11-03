@@ -6,13 +6,13 @@ import java.nio.file.Path;
 /**
  * Created by Boomatang on 08/10/16.
  */
-public class MyThread implements Runnable{
+public class PDFThread implements Runnable{
     private Thread cThread = new Thread(this);
     private JLabel display;
     private Boolean  go;
     private Path start;
 
-    public MyThread(JLabel windowIn){
+    public PDFThread(JLabel windowIn){
         display = windowIn;
         go = true;
     }

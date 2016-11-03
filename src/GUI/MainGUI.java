@@ -2,7 +2,7 @@ package GUI;
 
 import Other.EndUser;
 import Other.Events;
-import PDFMerge.MyThread;
+import PDFMerge.PDFThread;
 
 import javax.swing.*;
 import java.awt.*;
@@ -15,7 +15,7 @@ import java.nio.file.Paths;
  */
 
 public class MainGUI {
-
+    private DxfGUI dxfGUI;
     private JFrame frame;
     private int[] frameSize;
 
@@ -41,7 +41,7 @@ public class MainGUI {
     private JLabel subLabel, mainLabel;
     private Events events;
 
-    private MyThread counter;
+    private PDFThread counter;
     /**
      * Here is the main constructor
      */
@@ -54,6 +54,8 @@ public class MainGUI {
         frameSize[1] = 300;
         display = "Welcome";
         update = "Progress Report 0/0";
+        dxfGUI = new DxfGUI(subLabel);
+
         makeFrame();
         makeMenuBar();
         createPanels();
@@ -76,7 +78,7 @@ public class MainGUI {
      */
     private void addEventHandlers() {
         // Here the quit button is handled
-        counter = new MyThread(mainLabel);
+        counter = new PDFThread(mainLabel);
         quit.addActionListener(e -> {
             //runs the quit method from the MyEvent class
             events.quit(true);
@@ -208,8 +210,7 @@ public class MainGUI {
 
 //        midPanel = new JPanel(new GridLayout(5, 0));
         midPanel = new JPanel(new GridLayout(3, 0));
-        bottomPanel = new JPanel(new FlowLayout());
-        bottomPanel.setOpaque(false);
+        bottomPanel = dxfGUI.getPanel();
 
 
         // add the JPanels to the contentPane specifying the position of each
